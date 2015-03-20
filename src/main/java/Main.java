@@ -3,6 +3,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
+import org.jscience.physics.model.RelativisticModel;
+import org.jscience.physics.amount.Amount;
+import static javax.measure.unit.SI.KILOGRAM;
+import javax.measure.quantity.Mass;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
@@ -21,7 +25,11 @@ public class Main extends HttpServlet {
 
   private void showHome(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    resp.getWriter().print("Hello from Java!");
+      // Energy is compatible with mass (E=mc2)
+      RelativisticModel.select();
+      Amount<Mass> m = Amount.valueOf("12 GeV").to(KILOGRAM);
+
+      resp.getWriter().print("E=mc^2: 12 GeV = " + m);
   }
 
   private void showDatabase(HttpServletRequest req, HttpServletResponse resp)
