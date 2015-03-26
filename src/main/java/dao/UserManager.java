@@ -3,6 +3,7 @@ package dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import businessObjects.User;
 
 public class UserManager {
@@ -16,6 +17,11 @@ public class UserManager {
             users.add(user);
         }
         return users;
+    }
+
+    public static void generateUserName(User u){
+        String random = UUID.randomUUID().toString();
+        u.setUsername(random);
     }
 
     public static User retrieve(Integer id) throws Exception {
