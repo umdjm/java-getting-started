@@ -17,8 +17,6 @@ public class DataManager {
 
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ":" + port + dbUri.getPath();
 
-        //throw new Exception("username:" + username + ", password:" + password + ", DATABASE_URL: " + System.getenv("DATABASE_URL") + ", port:" + port);
-
         return DriverManager.getConnection(dbUrl, username, password);
     }
 
