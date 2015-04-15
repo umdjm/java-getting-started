@@ -1,10 +1,11 @@
 package dao;
 
+import businessObjects.User;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import businessObjects.User;
 
 public class UserManager {
 
@@ -19,6 +20,12 @@ public class UserManager {
         return users;
     }
 
+    public static User createUser() throws Exception {
+        User user = new User();
+        generateUserName(user);
+        insert(user);
+        return user;
+    }
     public static void generateUserName(User u){
         String random = UUID.randomUUID().toString();
         u.setUsername(random);
